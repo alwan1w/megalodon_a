@@ -115,5 +115,18 @@ namespace dealer_m
                 }
             }
         }
+        public void baca(SqlConnection con)
+        {
+            SqlCommand cmd = new SqlCommand("Select*From pembeli", con);
+            SqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                for (int i = 0; i < r.FieldCount; i++)
+                {
+                    Console.WriteLine(r.GetValue(i));
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
