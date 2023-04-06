@@ -82,7 +82,7 @@ namespace dealer_m
 
                                                 }
                                                 break;
-                                            case '3':
+                                            case '6':
                                                 conn.Close();
                                                 return;
                                             default:
@@ -127,6 +127,23 @@ namespace dealer_m
                 }
                 Console.WriteLine();
             }
+        }
+        public void insert(string id, string Nma, string jln, string kt, string kpos, string idm, string notlpn, SqlConnection con)
+        {
+            string str = "";
+            str = "insert into pembeli (id, Nma, jln, kt, kpos, idm, notlp)values(@id_pembeli, @nama_pembeli, @jalan, @kota, @kode_pos, @id_mobil, @no_tlp)";
+            SqlCommand cmd = new SqlCommand(str, con);
+            cmd.CommandType = CommandType.Text;
+
+            cmd.Parameters.Add(new SqlParameter("id_pembeli", id));
+            cmd.Parameters.Add(new SqlParameter("nama_pembeli", Nma));
+            cmd.Parameters.Add(new SqlParameter("jalan", jln));
+            cmd.Parameters.Add(new SqlParameter("kota", kt));
+            cmd.Parameters.Add(new SqlParameter("kode_pos", kpos));
+            cmd.Parameters.Add(new SqlParameter("id_mobil", idm));
+            cmd.Parameters.Add(new SqlParameter("no_tlp", notlpn));
+            cmd.ExecuteNonQuery();
+            Console.WriteLine("Data Berhasil Ditambahkan");
         }
     }
 }
